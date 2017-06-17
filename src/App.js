@@ -10,7 +10,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers';
-import AppContainer from './containers/AppContainer';
+import Routes from './routes';
 
 const middlewares = [];
 
@@ -34,9 +34,8 @@ const store = configureStore({});
 
 const App = () => (
   <Provider store={store}>
-    <AppContainer />
+    <Routes />
   </Provider>
 );
-
 
 AppRegistry.registerComponent('Thirteen', () => App);
