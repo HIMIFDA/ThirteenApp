@@ -7,10 +7,7 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux';
 
-class FooterApp extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class FooterApp extends Component {
 
   renderButton(navigateTo = 'Home', title = 'home', icon = 'apps', currentTab = 'Home') {
     const { navigate } = this.props.navigation;
@@ -27,7 +24,7 @@ class FooterApp extends Component {
     }
 
     return (
-        <Button 
+        <Button
           onPress={() => navigate(`${navigateTo}`)}
           title={title}
         >
@@ -53,10 +50,3 @@ class FooterApp extends Component {
       );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        currentTab: state.currentTab
-    }
-}
-export default connect(mapStateToProps)(FooterApp);

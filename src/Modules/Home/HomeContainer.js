@@ -15,7 +15,7 @@ import {
 class HomeContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { currentTab: 'Home' };
+        this.state = { searching: false };
     }
 
     static navigationOptions = {
@@ -26,10 +26,17 @@ class HomeContainer extends Component {
         this.props.setActiveTab('Home')
     }
 
+    searchPressed = () => {
+        this.setState({ searching: true });
+        this.props.fetchReferences(11).then( (res) => {
+          this.setState({ searching: false })
+        });
+    }
+
     render() {
         return (
             <Container>
-                <Home {...this.props}/>
+                <Home {...this.props} searchPressed={this.searchPressed} searching={this.state.searching} />
 
                 <FooterApp {...this.props} />
             </Container>
@@ -37,10 +44,15 @@ class HomeContainer extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        searchedReferences: state.searchedReferences,
+        currentTab: state.currentTab
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect((state) => { 
-    return {} 
-}, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

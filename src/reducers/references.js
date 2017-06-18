@@ -1,7 +1,7 @@
 import createReducer from '../lib/createReducer';
 import * as types from '../actions/types';
 
-export const searchedReferences = createReducer({}, {
+export const searchedReferences = createReducer([], {
     [types.SET_SEARCHED_REFERENCES](state, action) {
         return action.references;
     } 
