@@ -3,46 +3,45 @@
 
 import React, { Component, PropTypes } from 'react';
 import {
-    Image
+    StyleSheet,
+    Image,
+    View,
+    TouchableHighlight
 } from 'react-native';
-import { Container, Content, Card, CardItem, Text, Button, Left, Body } from 'native-base';
+import { Container, Content, Card, CardItem, Text, Button, Left, Body, Icon, Right, Spinner } from 'native-base';
 import HomeList from './HomeList';
 
 export default class Home extends Component {
     
     static propTypes = {
-      searching: PropTypes.bool,
-      searchedReferences: PropTypes.array,
-      searchPressed: PropTypes.func
     };
 
-    references() {
-      return Object.keys(this.props.searchedReferences).map(key => this.props.searchedReferences[key])
+    posts() {
+      return Object.keys(this.props.posts).map(key => this.props.posts[key])
     }
+
 
     render() {
         return (
             <Container>
                 <Content>
-                    <Button danger onPress={() => this.props.searchPressed()} >
-                        <Text>Search References</Text>
-                    </Button>
-                    { !this.props.searching &&
-                        this.references().map((reference) => {
+                    { this.posts().map((post) => {
                             return (
-                                 <HomeList
-                                    key={reference.id}
-                                    title={reference.title}
-                                    writer={reference.writer}
-                                    image={reference.image}
-                                 />
+                                <HomeList
+                                  key={post.id}
+                                  id={post.id}
+                                  title={post.title}
+                                  content={post.content}
+                                  createdAt={post.created_at}
+                                  featuredImage={post.featured_image}
+                                  {...this.props}
+                                />
                             );
                         })  
                     }
-                    {this.props.searching ? <Text>Searching...</Text> : null }
+                    {this.props.loading ? <Spinner color='red' /> : null }
                 </Content>
             </Container>
         )
     }
 }
-

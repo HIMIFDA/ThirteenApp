@@ -3,10 +3,8 @@ import Api from '../lib/api';
 
 export function fetchReferences(classReference) {
     return (dispatch, getState) => {
-        console.log('action');
         return Api.get(`/references/get/${classReference}`)
-                .then( resp => {
-                    console.log('resp');        
+                .then( resp => {    
                     dispatch(setSearchedReferences( {references: resp.references} ) );
                 })
                 .catch( (ex) => {

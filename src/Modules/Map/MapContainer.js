@@ -27,7 +27,7 @@ class MapContainer extends Component {
     title: `Map`,
   });
   
-  componentWillMount() {
+  componentDidMount() {
       this.props.setActiveTab('Map');
   }
 
@@ -40,7 +40,7 @@ class MapContainer extends Component {
                   initialRegion={{latitude: LATITUDE, longitude: LONGITUDE, latitudeDelta: LATITUDE_DELTA, longitudeDelta: LONGITUDE_DELTA}}
                   >
                     <MapView.Marker
-                      coordinate={{latitude: -6.2302379, longitude: 106.9243849}}
+                      coordinate={{latitude: LATITUDE, longitude: LONGITUDE}}
                       title={'UNSADA'}
                       description={'UNIVERSITAS DARMA PERSADA'}
                     />

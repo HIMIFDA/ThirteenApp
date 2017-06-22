@@ -1,3 +1,5 @@
+import * as env from '../config';
+
 class Api {
   static headers() {
     return {
@@ -24,22 +26,18 @@ class Api {
   }
 
   static xhr(route, params, verb) {
-    console.log('api');
-    const host = 'http://128.199.207.199/api';
+    const host = env.API_URL;
     const url = `${host}${route}`
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null );
     options.headers = Api.headers()
     return fetch(url, options).then( resp => {
       let json = resp.json();
-      console.log('resp api');
 
       if (resp.ok) {
-        console.log('return json');
-
         return json
       }
       return json.then(err => {throw err});
-    }).then( json => json );
+    }).then( json => json )
   }
 }
 export default Api
