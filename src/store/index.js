@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import reducer from './reducers';
+import reducer from '../reducers';
 
 const middlewares = [];
 
@@ -23,5 +23,3 @@ function configureStore(initialState) {
 const store = configureStore({});
 
 export default store;
-
-
