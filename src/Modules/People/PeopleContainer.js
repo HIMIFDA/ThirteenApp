@@ -5,39 +5,109 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../../actions';
-import People from './People';
 import FooterApp from '../../Components/Footer';
 import { 
-  Container
+  Container, 
+  Content, 
+  List, 
+  ListItem, 
+  Thumbnail, 
+  Text, 
+  Body
 } from 'native-base';
-
+import * as env from '../../config';
 
 class PeopleContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { searching: false };
     }
 
     static navigationOptions = {
-      title: 'Welcome',
+      title: 'People',
     };
 
     componentDidMount() {
         this.props.setActiveTab('People')
     }
 
-    searchPressed = () => {
-        this.setState({ searching: true });
-        this.props.fetchReferences(11).then( (res) => {
-          this.setState({ searching: false })
-        });
-    }
-
     render() {
         return (
 
             <Container>
-                <People {...this.props} searchPressed={this.searchPressed} searching={this.state.searching} />
+
+                <Content>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                  <List>
+                    <ListItem>
+                      <Thumbnail square size={80} source={{ uri: `${env.FEATURED_IMAGE_URL}/Helicopter-Featured-Image-300x169.jpg`}} />
+                      <Body>
+                        <Text>Sankhadeep</Text>
+                        <Text note>Its time to build a difference . .</Text>
+                      </Body>
+                    </ListItem>
+                  </List>
+
+                </Content>
 
                 <FooterApp {...this.props} />
             </Container>
@@ -47,7 +117,6 @@ class PeopleContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        searchedReferences: state.searchedReferences,
         currentTab: state.currentTab
     }
 }

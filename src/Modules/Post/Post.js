@@ -56,7 +56,9 @@ const styles = {
         paddingLeft: 5,
     },
     content: {
-        marginTop: 15
+        marginTop: 15,
+        paddingLeft: 15,
+        paddingRight: 15,
     },
     contentText: {
         paddingRight: 10,

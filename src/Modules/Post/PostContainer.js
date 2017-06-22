@@ -47,7 +47,7 @@ class PostContainer extends Component {
             <Container style={{backgroundColor: 'white'}}>
 
                 {!this.state.loading ? <Post {...this.props} /> 
-                : <Spinner color='red' />}    
+                : <Content><Spinner color='red' /></Content>}    
 
                 <FooterApp {...this.props}/>
 
